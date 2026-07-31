@@ -25,8 +25,11 @@ class AdminProdutoController extends Controller
     {
         $request->validate([
             'nome' => 'required|string',
-            'preco' => 'required|numeric',
-            'quantidade_estoque' => 'required|integer',
+            'sku' => 'required',
+            'preco_custo' => 'required|numeric',
+            'preco_venda' => 'required|numeric',
+            'estoque_atual' => 'required|integer',
+            'estoque_minimo' => 'required|integer',
             'categoria_id' => 'required|exists:categorias,id'
         ]);
         Produto::create($request->all());
@@ -43,8 +46,11 @@ class AdminProdutoController extends Controller
     {
         $request->validate([
             'nome' => 'required|string',
-            'preco' => 'required|numeric',
-            'quantidade_estoque' => 'required|integer',
+            'sku' => 'required',
+            'preco_custo' => 'required|numeric',
+            'preco_venda' => 'required|numeric',
+            'estoque_atual' => 'required|integer',
+            'estoque_minimo' => 'required|integer',
             'categoria_id' => 'required|exists:categorias,id'
         ]);
         $produto->update($request->all());

@@ -31,16 +31,18 @@ class AdminMovimentacaoController extends Controller
 
         $produto = Produto::findOrFail($request->produto_id);
 
-        if ($request->tipo === 'saida' && $produto->quantidade_estoque < $request->quantidade) {
+        if ($request->tipo === 'saida' && $produto->estoque_atual < $request->quantidade) {
             return back()->withErrors(['quantidade' => 'Estoque insuficiente para esta saída.'])->withInput();
         }
 
-        Movimentacao::create($request->all());
+        $data = $request->all();
+        $data['usuario_id'] = auth()->id();
+        Movimentacao::create($data);
 
         if ($request->tipo === 'entrada') {
-            $produto->increment('quantidade_estoque', $request->quantidade);
+            $produto->increment('estoque_atual', $request->quantidade);
         } else {
-            $produto->decrement('quantidade_estoque', $request->quantidade);
+            $produto->decrement('estoque_atual', $request->quantidade);
         }
 
         return redirect()->route('admin.movimentacoes.index')->with('success', 'Movimentação registrada com sucesso.');

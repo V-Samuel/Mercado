@@ -15,7 +15,7 @@
             <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="produto_id" name="produto_id" required>
                 <option value="">Selecione...</option>
                 @foreach($produtos as $produto)
-                    <option value="{{ $produto->id }}" {{ old('produto_id') == $produto->id ? 'selected' : '' }}>{{ $produto->nome }} (Estoque: {{ $produto->quantidade_estoque }})</option>
+                    <option value="{{ $produto->id }}" {{ old('produto_id') == $produto->id ? 'selected' : '' }}>{{ $produto->nome }} (Estoque: {{ $produto->estoque_atual }})</option>
                 @endforeach
             </select>
         </div>

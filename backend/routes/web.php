@@ -14,9 +14,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('login', [AdminAuthController::class, 'login']);
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
+    Route::get('register', [AdminAuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AdminAuthController::class, 'register']);
+
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-        
         Route::resource('categorias', AdminCategoriaController::class)->except(['show']);
         Route::resource('produtos', AdminProdutoController::class)->except(['show']);
         Route::resource('movimentacoes', AdminMovimentacaoController::class)->only(['index', 'create', 'store']);

@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - @yield('title', 'Dashboard')</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden relative">
         
+        <!-- Mobile sidebar backdrop -->
+        <div id="sidebarBackdrop" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-40 hidden md:hidden transition-opacity"></div>
+
         <!-- Sidebar -->
-        <aside class="w-64 bg-white shadow-md flex-shrink-0 hidden md:flex flex-col">
+        <aside id="sidebar" class="w-64 bg-white shadow-md shrink-0 flex flex-col absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50 h-full">
             <div class="p-6 border-b">
-                <h1 class="text-2xl font-bold text-indigo-600">Admin Panel</h1>
+                <h1 class="text-2xl font-bold text-indigo-600">Painel do Admin</h1>
             </div>
             <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
                 <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Dashboard</a>
@@ -24,7 +28,7 @@
             <div class="p-4 border-t">
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded font-semibold">Sair</button>
+                    <button type="submit" class="bg-stone-200 w-full text-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg font-semibold">Sair</button>
                 </form>
             </div>
         </aside>
@@ -33,11 +37,16 @@
         <main class="flex-1 flex flex-col overflow-hidden">
             <!-- Header for mobile / User info -->
             <header class="bg-white shadow-sm z-10 flex items-center justify-between p-4 md:px-6">
-                <div class="md:hidden">
-                    <h1 class="text-xl font-bold text-indigo-600">Admin Panel</h1>
+                <div class="flex items-center md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-gray-900 focus:outline-none mr-3">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <h1 class="text-xl font-bold text-indigo-600">Painel do Admin</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <span class="text-sm font-medium text-gray-700">Olá, {{ Auth::user()->name ?? 'Administrador' }}</span>
+                <div class="flex items-center space-x-4 ml-auto">
+                    <span class="text-base font-medium text-gray-700">Olá, {{ Auth::user()->name ?? 'Administrador' }}</span>
                 </div>
             </header>
 
@@ -63,5 +72,23 @@
             </div>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('-translate-x-full');
+                backdrop.classList.toggle('hidden');
+            }
+
+            if (btn && sidebar && backdrop) {
+                btn.addEventListener('click', toggleSidebar);
+                backdrop.addEventListener('click', toggleSidebar);
+            }
+        });
+    </script>
 </body>
 </html>

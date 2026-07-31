@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Painel Admin</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded shadow-md w-full max-w-sm">
+    <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
         <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Admin Login</h2>
         
         @if($errors->any())

@@ -15,12 +15,24 @@
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nome" type="text" name="nome" value="{{ old('nome') }}" required>
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="preco">Preço</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="preco" type="number" step="0.01" name="preco" value="{{ old('preco') }}" required>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="sku">Código de Barras/ SKU</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sku" type="number" name="sku" value="{{ old('sku') }}" required>
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="quantidade_estoque">Estoque Inicial</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="quantidade_estoque" type="number" name="quantidade_estoque" value="{{ old('quantidade_estoque', 0) }}" required>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="preco_custo">Preço Custo</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="preco_custo" type="number" step="0.01" name="preco_custo" value="{{ old('preco_custo') }}" required>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="preco_venda">Preço Venda</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="preco_venda" type="number" step="0.01" name="preco_venda" value="{{ old('preco_venda') }}" required>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="estoque_atual">Estoque Atual</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estoque_atual" type="number" name="estoque_atual" value="{{ old('estoque_atual', 0) }}" required>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="estoque_minimo">Estoque Mínimo</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estoque_minimo" type="number" name="estoque_minimo" value="{{ old('estoque_minimo', 5) }}" required>
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="categoria_id">Categoria</label>
