@@ -28,10 +28,10 @@
             
             @forelse($produtos as $produto)
             <!-- LINHA (TR): Vira um 'card' no celular (com margem inferior, fundo branco e sombra) -->
-            <tr class="block md:table-row bg-white md:bg-transparent shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 hover:bg-gray-100 p-2 md:p-0">
+            <tr class="block md:table-row shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 p-2 md:p-0 {{ $produto->estoque_atual < $produto->estoque_minimo ? 'bg-red-200 hover:bg-red-100' : 'bg-white md:bg-transparent' }}">
                 
                 <!-- CÉLULAS (TD): Viram blocos empilhados no celular -->
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left block md:table-cell border-b md:border-none border-gray-100">
+                <td  class="py-2 px-4 md:py-3 md:px-6 text-left block md:table-cell border-b md:border-none border-gray-100">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">ID:</span>
                     {{ $produto->id }}
                 </td>
@@ -90,6 +90,7 @@
                     Nenhum produto encontrado.
                 </td>
             </tr>
+
             @endforelse
             
         </tbody>

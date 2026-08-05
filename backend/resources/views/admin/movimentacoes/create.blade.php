@@ -30,6 +30,15 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="quantidade">Quantidade</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="quantidade" type="number" name="quantidade" min="1" value="{{ old('quantidade') }}" required>
         </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="motivo">Motivo (opcional)</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="motivo" type="text" name="motivo" value="{{ old('motivo') }}">
+        </div>
+        <input type="hidden" name="usuario_id" value="{{ Auth::id() }}">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="usuario_id">Usuário</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="usuario_id" type="text" name="usuario_id" value="{{ Auth::user()->name }}" readonly>
+        </div> 
         <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Registrar
         </button>

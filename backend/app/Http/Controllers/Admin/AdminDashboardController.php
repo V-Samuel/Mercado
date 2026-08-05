@@ -16,7 +16,33 @@ class AdminDashboardController extends Controller
         $categoriasCount = Categoria::count();
         $movimentacoesCount = Movimentacao::count();
         $produtosAbaixoEstoqueMinimoCount = Produto::whereColumn('estoque_atual', '<', 'estoque_minimo')->count();
+        $produtosAbaixoEstoqueMinimo = Produto::whereColumn('estoque_atual', '<', 'estoque_minimo')->pluck('nome')->implode(', ');
+        $produtoMaisMovimentado = Movimentacao::select('produto_id')
+            ->selectRaw('COUNT(*) as total_movimentacoes')
+            ->groupBy('produto_id')
+            ->orderByDesc('total_movimentacoes')
+            ->first()?->produto->nome ?? 'Nenhum produto movimentado';
+        $topProdutosVendidos = Movimentacao::selectRaw('produto_id, SUM(quantidade) as total_vendido')
+            ->where('tipo', 'saida')
+            ->groupBy('produto_id')
+            ->orderByDesc('total_vendido')
+            ->limit(7)
+            ->with('produto')
+            ->get();
+
+        $chartLabels = $topProdutosVendidos->pluck('produto.nome')->toArray();
+        $chartData = $topProdutosVendidos->pluck('total_vendido')->toArray();
+
         // Add more stats if needed
-        return view('admin.dashboard', compact('produtosCount', 'categoriasCount', 'movimentacoesCount', 'produtosAbaixoEstoqueMinimoCount'));
+        return view('admin.dashboard', compact(
+            'produtosCount', 
+            'categoriasCount', 
+            'movimentacoesCount', 
+            'produtosAbaixoEstoqueMinimoCount', 
+            'produtosAbaixoEstoqueMinimo', 
+            'produtoMaisMovimentado',
+            'chartLabels',
+            'chartData'
+        ));
     }
 }

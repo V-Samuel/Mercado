@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="flex h-screen overflow-hidden relative">
@@ -45,7 +46,7 @@
                     </button>
                     <h1 class="text-xl font-bold text-indigo-600">Painel do Admin</h1>
                 </div>
-                <div class="flex items-center space-x-4 ml-auto">
+                <div class="flex items-center space-x-4">
                     <span class="text-base font-medium text-gray-700">Olá, {{ Auth::user()->name ?? 'Administrador' }}</span>
                 </div>
             </header>

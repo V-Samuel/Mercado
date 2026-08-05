@@ -26,7 +26,8 @@ class AdminMovimentacaoController extends Controller
         $request->validate([
             'produto_id' => 'required|exists:produtos,id',
             'tipo' => 'required|in:entrada,saida',
-            'quantidade' => 'required|integer|min:1'
+            'quantidade' => 'required|integer|min:1',
+            'motivo' => 'nullable|string|max:255',
         ]);
 
         $produto = Produto::findOrFail($request->produto_id);
