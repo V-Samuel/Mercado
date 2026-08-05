@@ -13,7 +13,22 @@
         @method('PUT')
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="nome">Nome</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nome" type="text" name="nome" value="{{ old('nome', $produto->nome) }}" required>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nome" type="text" name="nome" value="{{ old('nome', $produto->nome) }}">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="valor_unidade_medida">Valor da Unidade de Medida</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="valor_unidade_medida" type="number" step="0.01" name="valor_unidade_medida" value="{{ old('valor_unidade_medida', $produto->valor_unidade_medida) }}">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="unidade_medida">Unidade de Medida</label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="unidade_medida" name="unidade_medida">
+                <option value="">Selecione...</option>
+                <option value="Kg" {{ old('unidade_medida') == 'Kg' ? 'selected' : '' }}>Quilograma (Kg)</option>
+                <option value="g" {{ old('unidade_medida') == 'g' ? 'selected' : '' }}>Grama (g)</option>
+                <option value="L" {{ old('unidade_medida') == 'L' ? 'selected' : '' }}>Litro (L)</option>
+                <option value="Ml" {{ old('unidade_medida') == 'Ml' ? 'selected' : '' }}>Mililitro (Ml)</option>
+                <option value="un" {{ old('unidade_medida') == 'un' ? 'selected' : '' }}>Unidade (un)</option>
+            </select>
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="sku">Código de Barras/ SKU</label>

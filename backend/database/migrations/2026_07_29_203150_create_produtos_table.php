@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->decimal('valor_unidade_medida', 5, 2)->nullable();
+            $table->string('unidade_medida')->nullable();
             $table->string('sku')->unique()->nullable();
             $table->decimal('preco_custo', 10, 2)->default(0);
             $table->decimal('preco_venda', 10, 2);

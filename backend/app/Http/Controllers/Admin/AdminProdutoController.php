@@ -46,6 +46,8 @@ class AdminProdutoController extends Controller
     {
         $request->validate([
             'nome' => 'required|string',
+            'valor_unidade_medida' => 'nullable|numeric',
+            'unidade_medida' => 'nullable|string',
             'sku' => 'required',
             'preco_custo' => 'required|numeric',
             'preco_venda' => 'required|numeric',

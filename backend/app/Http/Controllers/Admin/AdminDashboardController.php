@@ -32,8 +32,7 @@ class AdminDashboardController extends Controller
 
         $chartLabels = $topProdutosVendidos->pluck('produto.nome')->toArray();
         $chartData = $topProdutosVendidos->pluck('total_vendido')->toArray();
-
-        // Add more stats if needed
+        
         return view('admin.dashboard', compact(
             'produtosCount', 
             'categoriasCount', 

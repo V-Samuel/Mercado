@@ -8,6 +8,8 @@ class Produto extends Model
 {
     protected $fillable = [
         'nome',
+        'valor_unidade_medida',
+        'unidade_medida',
         'sku',
         'preco_custo',
         'preco_venda',

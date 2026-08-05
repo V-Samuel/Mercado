@@ -132,18 +132,23 @@ document.addEventListener("DOMContentLoaded", function() {
             labels: {
                 style: {
                     colors: "#6B7280",
-                    fontSize: "12px"
+                    fontSize: "15px"
                 }
             }
         },
         yaxis: {
             title: {
-                text: "Quantidade"
-            },
+                text: "Quantidade",
+                style: {
+                    fontSize: "15px",
+                }
+                
+            },  
             labels: {
                 style: {
-                    colors: "#6B7280"
-                    
+                    colors: "#6B7280",
+                    fontSize: "15px"
+
                 }
             }
         },
