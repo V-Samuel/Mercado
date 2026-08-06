@@ -21,6 +21,7 @@ class AdminDashboardController extends Controller
             ->selectRaw('COUNT(*) as total_movimentacoes')
             ->groupBy('produto_id')
             ->orderByDesc('total_movimentacoes')
+            ->with('produto')
             ->first()?->produto->nome ?? 'Nenhum produto movimentado';
         $topProdutosVendidos = Movimentacao::selectRaw('produto_id, SUM(quantidade) as total_vendido')
             ->where('tipo', 'saida')

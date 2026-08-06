@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
             labels: {
                 style: {
                     colors: "#6B7280",
-                    fontSize: "15px"
+                    fontSize: "13px"
                 }
             }
         },

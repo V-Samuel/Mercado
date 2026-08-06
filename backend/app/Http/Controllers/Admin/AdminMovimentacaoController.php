@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Movimentacao;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMovimentacaoController extends Controller
 {
@@ -37,7 +38,7 @@ class AdminMovimentacaoController extends Controller
         }
 
         $data = $request->all();
-        $data['usuario_id'] = auth()->id();
+        $data['usuario_id'] = Auth::id();
         Movimentacao::create($data);
 
         if ($request->tipo === 'entrada') {

@@ -51,7 +51,7 @@ class AdminProdutoController extends Controller
             'sku' => 'required',
             'preco_custo' => 'required|numeric',
             'preco_venda' => 'required|numeric',
-            'estoque_atual' => 'required|integer',
+            'estoque_atual' => 'integer',
             'estoque_minimo' => 'required|integer',
             'categoria_id' => 'required|exists:categorias,id'
         ]);

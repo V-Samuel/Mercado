@@ -25,7 +25,7 @@
                 <option value="Kg" {{ old('unidade_medida') == 'Kg' ? 'selected' : '' }}>Quilograma (Kg)</option>
                 <option value="g" {{ old('unidade_medida') == 'g' ? 'selected' : '' }}>Grama (g)</option>
                 <option value="L" {{ old('unidade_medida') == 'L' ? 'selected' : '' }}>Litro (L)</option>
-                <option value="Ml" {{ old('unidade_medida') == 'Ml' ? 'selected' : '' }}>Mililitro (Ml)</option>
+                <option value="ml" {{ old('unidade_medida') == 'ml' ? 'selected' : '' }}>Mililitro (ml)</option>
                 <option value="un" {{ old('unidade_medida') == 'un' ? 'selected' : '' }}>Unidade (un)</option>
             </select>
         </div>

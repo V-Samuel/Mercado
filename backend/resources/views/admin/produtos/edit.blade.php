@@ -23,11 +23,11 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="unidade_medida">Unidade de Medida</label>
             <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="unidade_medida" name="unidade_medida">
                 <option value="">Selecione...</option>
-                <option value="Kg" {{ old('unidade_medida') == 'Kg' ? 'selected' : '' }}>Quilograma (Kg)</option>
-                <option value="g" {{ old('unidade_medida') == 'g' ? 'selected' : '' }}>Grama (g)</option>
-                <option value="L" {{ old('unidade_medida') == 'L' ? 'selected' : '' }}>Litro (L)</option>
-                <option value="Ml" {{ old('unidade_medida') == 'Ml' ? 'selected' : '' }}>Mililitro (Ml)</option>
-                <option value="un" {{ old('unidade_medida') == 'un' ? 'selected' : '' }}>Unidade (un)</option>
+                <option value="Kg" {{ old('unidade_medida', $produto->unidade_medida ?? '') == 'Kg' ? 'selected' : '' }}>Quilograma (Kg)</option>
+                <option value="g" {{ old('unidade_medida', $produto->unidade_medida ?? '') == 'g' ? 'selected' : '' }}>Grama (g)</option>
+                <option value="L" {{ old('unidade_medida', $produto->unidade_medida ?? '') == 'L' ? 'selected' : '' }}>Litro (L)</option>
+                <option value="ml" {{ old('unidade_medida', $produto->unidade_medida ?? '') == 'ml' ? 'selected' : '' }}>Mililitro (ml)</option>
+                <option value="un" {{ old('unidade_medida', $produto->unidade_medida ?? '') == 'un' ? 'selected' : '' }}>Unidade (un)</option>
             </select>
         </div>
         <div class="mb-4">
@@ -43,10 +43,6 @@
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="preco_venda" type="number" step="0.01" name="preco_venda" value="{{ old('preco_venda', $produto->preco_venda) }}" required>
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="estoque_atual">Estoque Atual</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estoque_atual" type="number" name="estoque_atual" value="{{ old('estoque_atual', $produto->estoque_atual) }}" required>
-        </div>
-        <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="estoque_minimo">Estoque Mínimo</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estoque_minimo" type="number" name="estoque_minimo" value="{{ old('estoque_minimo', $produto->estoque_minimo) }}" required>
         </div>
@@ -55,7 +51,7 @@
             <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="categoria_id" name="categoria_id" required>
                 <option value="">Selecione...</option>
                 @foreach($categorias as $cat)
-                    <option value="{{ $cat->id }}" {{ old('categoria_id', $produto->categoria_id) == $cat->id ? 'selected' : '' }}>{{ $cat->nome }}</option>
+                    <option value="{{ $cat->id }}" {{ old('categoria_id', $produto->categoria_id ?? '') == $cat->id ? 'selected' : '' }}>{{ $cat->nome }}</option>
                 @endforeach
             </select>
         </div>
