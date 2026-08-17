@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Painel Admin</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
@@ -33,6 +33,7 @@
                 </button>
             </div>
         </form>
+        <a href="{{route('admin.register')}}" class="block mt-4 text-center text-sm text-indigo-600 hover:text-indigo-800">Criar uma conta</a>
     </div>
 </body>
 </html>

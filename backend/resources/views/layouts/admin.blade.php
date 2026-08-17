@@ -6,8 +6,8 @@
     <title>Painel Admin - @yield('title', 'Dashboard')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="flex h-screen overflow-hidden relative">
@@ -17,7 +17,7 @@
 
         <!-- Sidebar -->
         <aside id="sidebar" class="w-64 bg-white shadow-md shrink-0 flex flex-col absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50 h-full">
-            <div class="p-6 border-b">
+            <div class="p-6 border-b border-gray-300">
                 <h1 class="text-2xl font-bold text-indigo-600">Painel do Admin</h1>
             </div>
             <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
@@ -26,7 +26,7 @@
                 <a href="{{ route('admin.categorias.index') }}" class="block px-4 py-2 rounded {{ request()->routeIs('admin.categorias.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Categorias</a>
                 <a href="{{ route('admin.movimentacoes.index') }}" class="block px-4 py-2 rounded {{ request()->routeIs('admin.movimentacoes.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Movimentações</a>
             </nav>
-            <div class="p-4 border-t">
+            <div class="p-4 border-t border-gray-300">
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="bg-stone-200 w-full text-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg font-semibold">Sair</button>
@@ -71,6 +71,7 @@
 
                 @yield('content')
             </div>
+            @include('layouts.modal') 
         </main>
     </div>
 

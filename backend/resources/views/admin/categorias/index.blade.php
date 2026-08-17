@@ -22,11 +22,11 @@
                 <td class="py-3 px-6 text-left">{{ $categoria->nome }}</td>
                 <td class="py-3 px-6 text-center">
                     <div class="flex item-center justify-center space-x-2">
-                        <a href="{{ route('admin.categorias.edit', $categoria) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
+                        <a href="{{ route('admin.categorias.edit', $categoria) }}" class="text-blue-500 bg-blue-200 hover:bg-blue-300 rounded-md py-1 px-1">Editar</a>
                         <form action="{{ route('admin.categorias.destroy', $categoria) }}" method="POST" onsubmit="return confirm('Tem certeza?');" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-700">Excluir</button>
+                            <button type="button" onclick="abrirModal(this.closest('form'))" class="text-red-500 bg-red-200 hover:bg-red-300 rounded-md py-1 px-1">Excluir</button>
                         </form>
                     </div>
                 </td>
@@ -39,4 +39,6 @@
         </tbody>
     </table>
 </div>
+
+
 @endsection

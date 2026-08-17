@@ -79,11 +79,11 @@
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Ações:</span>
                     <!-- Ajustado para alinhar à esquerda no mobile e centralizar no desktop -->
                     <div class="inline-flex md:flex items-center justify-start md:justify-center space-x-2">
-                        <a href="{{ route('admin.produtos.edit', $produto) }}" class="text-blue-500 hover:text-blue-700 bg-blue-200 rounded-md py-1 px-1">Editar</a>
-                        <form action="{{ route('admin.produtos.destroy', $produto) }}" method="POST" onsubmit="return confirm('Tem certeza?');" class="inline-block">
+                        <a href="{{ route('admin.produtos.edit', $produto) }}" class="text-blue-500 bg-blue-200 hover:bg-blue-300 rounded-md py-1 px-1">Editar</a>
+                        <form action="{{ route('admin.produtos.destroy', $produto) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-700 bg-red-200 rounded-md py-1 px-1">Excluir</button>
+                            <button type="button" onclick="abrirModal(this.closest('form'))" class="text-red-500 bg-red-200 hover:bg-red-300 rounded-md py-1 px-1">Excluir</button>
                         </form>
                     </div>
                 </td>
@@ -100,4 +100,6 @@
         </tbody>
     </table>
 </div>
+
+
 @endsection
