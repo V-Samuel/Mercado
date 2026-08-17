@@ -1,4 +1,4 @@
-<div id="modalExclusao" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
+<div id="modalExclusao" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
     <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Tem certeza?</h2>
         <p class="text-gray-600 mb-6">
