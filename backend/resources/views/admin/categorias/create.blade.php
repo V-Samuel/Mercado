@@ -5,7 +5,7 @@
     <a href="{{ route('admin.categorias.index') }}" class="text-indigo-600 hover:text-indigo-800">&larr; Voltar para Categorias</a>
 </div>
 
-<div class="bg-white p-6 rounded shadow-md max-w-lg">
+<div class="bg-white p-6 rounded-2xl shadow-md max-w-lg">
     <h2 class="text-xl font-semibold mb-4 text-gray-800">Nova Categoria</h2>
     
     <form action="{{ route('admin.categorias.store') }}" method="POST">

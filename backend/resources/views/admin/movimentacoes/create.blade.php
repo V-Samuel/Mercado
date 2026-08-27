@@ -5,7 +5,7 @@
     <a href="{{ route('admin.movimentacoes.index') }}" class="text-indigo-600 hover:text-indigo-800">&larr; Voltar para Movimentações</a>
 </div>
 
-<div class="bg-white p-6 rounded shadow-md max-w-lg">
+<div class="bg-white p-6 rounded-2xl shadow-md max-w-lg">
     <h2 class="text-xl font-semibold mb-4 text-gray-800">Nova Movimentação</h2>
     
     <form action="{{ route('admin.movimentacoes.store') }}" method="POST">

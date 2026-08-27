@@ -33,7 +33,9 @@ class AdminDashboardController extends Controller
 
         $chartLabels = $topProdutosVendidos->pluck('produto.nome')->toArray();
         $chartData = $topProdutosVendidos->pluck('total_vendido')->toArray();
-        
+        $produtosPertoDeVencerCount = Produto::where('data_validade', '<=', now()->addDays(30))->count();
+        $produtosPertoDeVencer = Produto::where('data_validade', '<=', now()->addDays(30))->pluck('nome')->implode(', ');
+
         return view('admin.dashboard', compact(
             'produtosCount', 
             'categoriasCount', 
@@ -42,7 +44,9 @@ class AdminDashboardController extends Controller
             'produtosAbaixoEstoqueMinimo', 
             'produtoMaisMovimentado',
             'chartLabels',
-            'chartData'
+            'chartData',
+            'produtosPertoDeVencerCount',
+            'produtosPertoDeVencer'
         ));
     }
 }

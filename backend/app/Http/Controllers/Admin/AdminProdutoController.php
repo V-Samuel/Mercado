@@ -26,6 +26,7 @@ class AdminProdutoController extends Controller
         $request->validate([
             'nome' => 'required|string',
             'sku' => 'required',
+            'data_validade' => 'nullable|date',
             'preco_custo' => 'required|numeric',
             'preco_venda' => 'required|numeric',
             'estoque_atual' => 'required|integer',
@@ -49,13 +50,13 @@ class AdminProdutoController extends Controller
             'valor_unidade_medida' => 'nullable|numeric',
             'unidade_medida' => 'nullable|string',
             'sku' => 'required',
+            'data_validade' => 'nullable|date',
             'preco_custo' => 'required|numeric',
             'preco_venda' => 'required|numeric',
-            'estoque_atual' => 'integer',
             'estoque_minimo' => 'required|integer',
             'categoria_id' => 'required|exists:categorias,id'
         ]);
-        $produto->update($request->all());
+        $produto->update($request->except(['estoque_atual']));
         return redirect()->route('admin.produtos.index')->with('success', 'Produto atualizado com sucesso.');
     }
 

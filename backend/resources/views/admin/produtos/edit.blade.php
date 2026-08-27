@@ -5,7 +5,7 @@
     <a href="{{ route('admin.produtos.index') }}" class="text-indigo-600 hover:text-indigo-800">&larr; Voltar para Produtos</a>
 </div>
 
-<div class="bg-white p-6 rounded shadow-md max-w-lg">
+<div class="bg-white p-6 rounded-2xl shadow-md max-w-lg">
     <h2 class="text-xl font-semibold mb-4 text-gray-800">Editar Produto</h2>
     
     <form action="{{ route('admin.produtos.update', $produto) }}" method="POST">
@@ -33,6 +33,10 @@
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="sku">Código de Barras/ SKU</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sku" type="number" name="sku" value="{{ old('sku', $produto->sku) }}" required>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="data_validade">Data de Validade</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="data_validade" type="date" name="data_validade" value="{{ old('data_validade', $produto->data_validade?->format('Y-m-d')) }}">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="preco_custo">Preço Custo</label>

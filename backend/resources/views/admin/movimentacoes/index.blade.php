@@ -7,7 +7,7 @@
 </div>
 
 <div class="my-6">
-    <table class="min-w-full w-full table-auto border-collapse">
+    <table class="min-w-full w-full table-auto border-collapse rounded-2xl shadow-md overflow-hidden">
         <!-- CABEÇALHO: Oculto no celular, visível a partir de telas médias (md) -->
         <thead class="hidden md:table-header-group">
             <tr class="bg-gray-200 text-gray-600 uppercase text-base leading-normal">

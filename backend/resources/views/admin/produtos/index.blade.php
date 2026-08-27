@@ -6,15 +6,40 @@
     <a href="{{ route('admin.produtos.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl shadow">Novo Produto</a>
 </div>
 
+<div class="flex justify-center md:justify-end">
+<div class="mt-6 bg-gray-50 p-4 rounded-2xl shadow-md border border-gray-200 max-w-sm">
+    <p class="font-bold text-gray-700 mb-3">Legendas de Atenção:</p>
+    <ul class="flex flex-col gap-2">
+
+        <li class="flex items-center gap-2">
+            <span class="block w-5 h-5 bg-red-300 rounded border border-red-400"></span>
+            <span class="text-gray-700 text-sm">Estoque abaixo do mínimo</span>
+        </li>
+        
+        <li class="flex items-center gap-2">
+            <span class="block w-5 h-5 bg-purple-200 rounded border border-purple-300"></span>
+            <span class="text-gray-700 text-sm">Produto com validade próxima (30 dias)</span>
+        </li>
+        
+        <li class="flex items-center gap-2">
+            <span class="block w-5 h-5 bg-[#f799b8] rounded border border-[#f55d90]"></span>
+            <span class="text-gray-700 text-sm">Estoque abaixo do mínimo e validade próxima</span>
+        </li>
+
+    </ul>
+</div>
+</div>
+
 <div class="my-6">
-    <table class="min-w-full w-full table-auto border-collapse">
+    <table class="min-w-full w-full table-auto border-collapse rounded-2xl shadow-md overflow-hidden">
         <!-- CABEÇALHO: Oculto no celular, visível a partir de telas médias (md) -->
         <thead class="hidden md:table-header-group">
             <tr class="bg-gray-200 text-gray-600 uppercase text-base leading-normal">
                 <th class="py-3 px-6 text-left md:text-center">ID</th>
-                <th class="py-3 px-6 text-left md:text-center">Nome</th>
-                <th class="py-3 px-6 text-left md:text-center">Unidade de Medida</th>
-                <th class="py-3 px-6 text-left md:text-center">SKU</th>
+                <th class="py-3 px-2 text-left md:text-center">Nome</th>
+                <th class="py-3 px-2 text-left md:text-center">Unidade de Medida</th>
+                <th class="py-3 px-2 text-left md:text-center">SKU</th>
+                <th class="py-3 px-2 text-left md:text-center">Data de Validade</th>
                 <th class="py-3 px-6 text-left md:text-center">Custo</th>
                 <th class="py-3 px-6 text-left md:text-center">Venda</th>
                 <th class="py-3 px-6 text-left md:text-center">Estoque</th>
@@ -29,7 +54,7 @@
             
             @forelse($produtos as $produto)
             <!-- LINHA (TR): Vira um 'card' no celular (com margem inferior, fundo branco e sombra) -->
-            <tr class="block md:table-row shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 p-2 md:p-0 {{ $produto->estoque_atual < $produto->estoque_minimo ? 'bg-red-200 hover:bg-red-100' : 'bg-white md:bg-transparent' }}">
+            <tr class="block md:table-row shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 p-2 md:p-0 {{$produto->estoque_atual < $produto->estoque_minimo && $produto->data_validade && $produto->data_validade <= now()->addDays(30) ?  'bg-[#f799b8] hover:bg-[#f8b0c8]' : ($produto->estoque_atual < $produto->estoque_minimo ? 'bg-red-300 hover:bg-red-200' : ( $produto->data_validade && $produto->data_validade <= now()->addDays(30) ? 'bg-purple-200 hover:bg-purple-100' : 'bg-white hover:bg-gray-200 md:bg-transparent' )  ) }}">
                 
                 <!-- CÉLULAS (TD): Viram blocos empilhados no celular -->
                 <td  class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
@@ -37,19 +62,22 @@
                     {{ $produto->id }}
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Nome:</span>
                     {{ $produto->nome }}
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Unidade de Medida:</span>
                     {{ number_format($produto->valor_unidade_medida, 2, ',', '.') }} {{ $produto->unidade_medida }}
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">SKU:</span>
                     {{ $produto->sku }}
                 </td>
-                
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Data de Validade:</span>
+                    {{ $produto->data_validade?->format('d/m/Y') ?? '-' }}
+                </td>
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Custo:</span>
                     R$ {{ number_format($produto->preco_custo, 2, ',', '.') }}
@@ -75,22 +103,21 @@
                     {{ $produto->categoria->nome ?? '-' }}
                 </td>
                 
-                <td class="py-3 px-4 md:px-6 text-left md:text-center block md:table-cell">
+                <td class="py-3 px-4 md:px-6 text-left md:text-center block md:table-cell uppercase text-base">
                     <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Ações:</span>
-                    <!-- Ajustado para alinhar à esquerda no mobile e centralizar no desktop -->
+    
                     <div class="inline-flex md:flex items-center justify-start md:justify-center space-x-2">
-                        <a href="{{ route('admin.produtos.edit', $produto) }}" class="text-blue-500 bg-blue-200 hover:bg-blue-300 rounded-md py-1 px-1">Editar</a>
-                        <form action="{{ route('admin.produtos.destroy', $produto) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="abrirModal(this.closest('form'))" class="text-red-500 bg-red-200 hover:bg-red-300 rounded-md py-1 px-1">Excluir</button>
-                        </form>
+        
+                        <x-button-edit href="{{ route('admin.produtos.edit', $produto) }}" />
+        
+                        <x-button-delete action="{{ route('admin.produtos.destroy', $produto) }}" />
+
                     </div>
                 </td>
             </tr>
             @empty
             <tr class="block md:table-row">
-                <td colspan="10" class="py-3 px-6 text-center text-gray-500 block md:table-cell bg-white rounded-lg shadow-sm">
+                <td colspan="11" class="py-3 px-6 text-center text-gray-500 block md:table-cell bg-white rounded-lg shadow-sm">
                     Nenhum produto encontrado.
                 </td>
             </tr>

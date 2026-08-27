@@ -11,11 +11,16 @@ class Produto extends Model
         'valor_unidade_medida',
         'unidade_medida',
         'sku',
+        'data_validade',
         'preco_custo',
         'preco_venda',
         'estoque_atual',
         'estoque_minimo',
         'categoria_id'
+    ];
+
+    protected $casts = [
+        'data_validade' => 'date', 
     ];
 
     public function categoria()
