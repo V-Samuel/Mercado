@@ -6,11 +6,11 @@
     <a href="{{ route('admin.produtos.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl shadow">Novo Produto</a>
 </div>
 
-<div class="flex justify-center md:justify-end">
-<div class="mt-6 bg-gray-50 p-4 rounded-2xl shadow-md border border-gray-200 max-w-sm">
-    <p class="font-bold text-gray-700 mb-3">Legendas de Atenção:</p>
-    <ul class="flex flex-col gap-2">
 
+<div class="mx-auto md:mx-0 mt-6 bg-gray-50 p-4 rounded-2xl shadow-md border border-gray-200 max-w-sm">
+    <p class="font-bold text-gray-700 mb-3">Legendas de Atenção:</p>
+
+    <ul class="flex flex-col gap-2">
         <li class="flex items-center gap-2">
             <span class="block w-5 h-5 bg-red-300 rounded border border-red-400"></span>
             <span class="text-gray-700 text-sm">Estoque abaixo do mínimo</span>
@@ -25,9 +25,8 @@
             <span class="block w-5 h-5 bg-[#f799b8] rounded border border-[#f55d90]"></span>
             <span class="text-gray-700 text-sm">Estoque abaixo do mínimo e validade próxima</span>
         </li>
-
     </ul>
-</div>
+
 </div>
 
 <div class="my-6">

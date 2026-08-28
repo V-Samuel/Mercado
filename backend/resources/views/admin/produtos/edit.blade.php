@@ -2,7 +2,7 @@
 @section('title', 'Editar Produto')
 @section('content')
 <div class="mb-6">
-    <a href="{{ route('admin.produtos.index') }}" class="text-indigo-600 hover:text-indigo-800">&larr; Voltar para Produtos</a>
+    <a href="{{ route('admin.produtos.index') }}" class="text-indigo-600 hover:text-indigo-800"> &larr; Voltar para Produtos</a>
 </div>
 
 <div class="bg-white p-6 rounded-2xl shadow-md max-w-lg">

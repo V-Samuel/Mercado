@@ -80,7 +80,11 @@
                     </summary>
                     <div class="grid grid-rows-[0fr] opacity-0 transition-all duration-500 ease-in-out group-open:grid-rows-[1fr] group-open:opacity-100 group-open:mt-2">
                         <div class="overflow-hidden">
-                            <p class="mt-2">{{ $produtosPertoDeVencer }}</p>
+
+                            @foreach($diasProdutosPertoDeVencer as $frase)
+                            <p class="mt-2">{{ $frase }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                 </details>

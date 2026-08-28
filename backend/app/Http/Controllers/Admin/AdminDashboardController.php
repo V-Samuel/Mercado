@@ -34,7 +34,31 @@ class AdminDashboardController extends Controller
         $chartLabels = $topProdutosVendidos->pluck('produto.nome')->toArray();
         $chartData = $topProdutosVendidos->pluck('total_vendido')->toArray();
         $produtosPertoDeVencerCount = Produto::where('data_validade', '<=', now()->addDays(30))->count();
-        $produtosPertoDeVencer = Produto::where('data_validade', '<=', now()->addDays(30))->pluck('nome')->implode(', ');
+        $diasProdutosPertoDeVencer = Produto::where('data_validade', '<=', now()->addDays(30))
+        ->get()
+        ->map(function ($produto) {
+
+            $dias = now()->startOfDay()->diffInDays($produto->data_validade, false); 
+        
+            $dias = (int) $dias;
+
+            if ($dias < 0) {
+                
+            $diasPassados = abs($dias); 
+            return "{$produto->nome} já venceu há {$diasPassados} dias!";
+            }
+
+            if ($dias === 1) {
+                return "{$produto->nome} falta 1 dia para vencer!";
+            }
+
+            if ($dias === 0) {
+                return "{$produto->nome} vence hoje!";
+            }
+        
+            return "{$produto->nome} faltam {$dias} dias para vencer"; 
+        })
+        ->toArray();
 
         return view('admin.dashboard', compact(
             'produtosCount', 
@@ -46,7 +70,7 @@ class AdminDashboardController extends Controller
             'chartLabels',
             'chartData',
             'produtosPertoDeVencerCount',
-            'produtosPertoDeVencer'
+            'diasProdutosPertoDeVencer'
         ));
     }
 }
