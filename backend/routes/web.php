@@ -6,8 +6,11 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminCategoriaController;
 use App\Http\Controllers\Admin\AdminProdutoController;
 use App\Http\Controllers\Admin\AdminMovimentacaoController;
+use App\Http\Controllers\DemoController;
 
 Route::redirect('/', '/admin/login');
+
+Route::get('/demo/start', [DemoController::class, 'startDemo'])->name('demo.start');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('login');

@@ -57,53 +57,53 @@
                 
                 <!-- CÉLULAS (TD): Viram blocos empilhados no celular -->
                 <td  class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">ID:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">ID:</span>
                     {{ $produto->id }}
                 </td>
                 
                 <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Nome:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Nome:</span>
                     {{ $produto->nome }}
                 </td>
                 <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Unidade de Medida:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Unidade de Medida:</span>
                     {{ number_format($produto->valor_unidade_medida, 2, ',', '.') }} {{ $produto->unidade_medida }}
                 </td>
                 <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">SKU:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">SKU:</span>
                     {{ $produto->sku }}
                 </td>
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Data de Validade:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Data de Validade:</span>
                     {{ $produto->data_validade?->format('d/m/Y') ?? '-' }}
                 </td>
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Custo:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Custo:</span>
                     R$ {{ number_format($produto->preco_custo, 2, ',', '.') }}
                 </td>
                 
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Venda:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Venda:</span>
                     R$ {{ number_format($produto->preco_venda, 2, ',', '.') }}
                 </td>
                 
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Estoque:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Estoque:</span>
                     {{ $produto->estoque_atual }}
                 </td>
                 
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Mínimo:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Mínimo:</span>
                     {{ $produto->estoque_minimo }}
                 </td>
                 
                 <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Categoria:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Categoria:</span>
                     {{ $produto->categoria->nome ?? '-' }}
                 </td>
                 
                 <td class="py-3 px-4 md:px-6 text-left md:text-center block md:table-cell uppercase text-base">
-                    <span class="inline-block w-24 font-bold text-gray-700 md:hidden">Ações:</span>
+                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Ações:</span>
     
                     <div class="inline-flex md:flex items-center justify-start md:justify-center space-x-2">
         
