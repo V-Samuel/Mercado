@@ -124,6 +124,7 @@ Para inicializar os dois projetos simultaneamente no dia a dia, basta abrir dois
 ```bash
 cd backend
 php artisan serve
+npm run dev
 ```
 
 **Terminal 2 (Landing Page):**
