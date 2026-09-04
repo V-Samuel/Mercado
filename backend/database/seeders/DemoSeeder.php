@@ -4,15 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DemoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        $user = \App\Models\User::first();
+    public function run(User $user): void {
         $userId = $user ? $user->id : 1;
 
         $catEletronicos = \App\Models\Categoria::create(['nome' => 'Eletrônicos', 'descricao' => 'Produtos de tecnologia', 'user_id' => $userId]);

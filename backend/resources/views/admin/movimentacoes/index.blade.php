@@ -11,8 +11,8 @@
         <!-- CABEÇALHO: Oculto no celular, visível a partir de telas médias (md) -->
         <thead class="hidden md:table-header-group">
             <tr class="bg-gray-200 text-gray-600 uppercase text-base leading-normal">
-                <th class="py-3 px-6 text-left">Data</th>
-                <th class="py-3 px-6 text-left">Produto</th>
+                <th class="py-3 px-6 text-center">Data</th>
+                <th class="py-3 px-6 text-center">Produto</th>
                 <th class="py-3 px-6 text-center">Tipo</th>
                 <th class="py-3 px-6 text-center">Quantidade</th>
             </tr>
@@ -26,29 +26,31 @@
             <tr class="block md:table-row bg-white md:bg-transparent shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 hover:bg-gray-100 p-2 md:p-0">
                 
                 <!-- CÉLULAS (TD) -->
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-28 font-bold text-gray-700 md:hidden">Data:</span>
-                    {{ $movimentacao->created_at->format('d/m/Y H:i') }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block w-28 shrink-0 font-bold text-gray-700 md:hidden">Data:</span>
+                    <span class="flex-1">{{ $movimentacao->created_at->format('d/m/Y H:i') }}</span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-28 font-bold text-gray-700 md:hidden">Produto:</span>
-                    {{ $movimentacao->produto->nome ?? '-' }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block w-28 shrink-0 font-bold text-gray-700 md:hidden">Produto:</span>
+                    <span class="flex-1">{{ $movimentacao->produto->nome ?? '-' }}</span>
                 </td>
                 
                 <!-- Note o text-left md:text-center para alinhar à esquerda no celular, mas manter centralizado no desktop -->
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-28 font-bold text-gray-700 md:hidden">Tipo:</span>
-                    @if($movimentacao->tipo === 'entrada')
-                        <span class="bg-green-200 text-green-700 py-1 px-3 rounded-full text-base">Entrada</span>
-                    @else
-                        <span class="bg-red-200 text-red-700 py-1 px-3 rounded-full text-base">Saída</span>
-                    @endif
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block w-28 shrink-0 font-bold text-gray-700 md:hidden">Tipo:</span>
+                    <span class="flex-1">
+                        @if($movimentacao->tipo === 'entrada')
+                            <span class="bg-green-200 text-green-700 py-1 px-3 rounded-full text-base">Entrada</span>
+                        @else
+                            <span class="bg-red-200 text-red-700 py-1 px-3 rounded-full text-base">Saída</span>
+                        @endif
+                    </span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block w-28 font-bold text-gray-700 md:hidden">Quantidade:</span>
-                    {{ $movimentacao->quantidade }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block w-28 shrink-0 font-bold text-gray-700 md:hidden">Quantidade:</span>
+                    <span class="flex-1">{{ $movimentacao->quantidade }}</span>
                 </td>
             </tr>
             @empty

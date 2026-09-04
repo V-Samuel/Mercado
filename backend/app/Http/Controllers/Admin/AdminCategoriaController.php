@@ -21,7 +21,10 @@ class AdminCategoriaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['nome' => 'required|string']);
+        $request->validate([
+            'nome' => 'required|string', 
+            'descricao' => 'nullable|string'
+            ]);
         Categoria::create($request->all());
         return redirect()->route('admin.categorias.index')->with('success', 'Categoria criada com sucesso.');
     }
@@ -33,7 +36,10 @@ class AdminCategoriaController extends Controller
 
     public function update(Request $request, Categoria $categoria)
     {
-        $request->validate(['nome' => 'required|string']);
+        $request->validate([
+            'nome' => 'required|string', 
+            'descricao' => 'nullable|string'
+        ]);
         $categoria->update($request->all());
         return redirect()->route('admin.categorias.index')->with('success', 'Categoria atualizada com sucesso.');
     }

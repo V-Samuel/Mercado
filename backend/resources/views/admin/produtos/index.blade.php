@@ -54,65 +54,63 @@
             @forelse($produtos as $produto)
             <!-- LINHA (TR): Vira um 'card' no celular (com margem inferior, fundo branco e sombra) -->
             <tr class="block md:table-row shadow-md md:shadow-none rounded-lg md:rounded-none mb-4 md:mb-0 border-b border-gray-200 p-2 md:p-0 {{$produto->estoque_atual < $produto->estoque_minimo && $produto->data_validade && $produto->data_validade <= now()->addDays(30) ?  'bg-[#f799b8] hover:bg-[#f8b0c8]' : ($produto->estoque_atual < $produto->estoque_minimo ? 'bg-red-300 hover:bg-red-200' : ( $produto->data_validade && $produto->data_validade <= now()->addDays(30) ? 'bg-purple-200 hover:bg-purple-100' : 'bg-white hover:bg-gray-200 md:bg-transparent' )  ) }}">
-                
-                <!-- CÉLULAS (TD): Viram blocos empilhados no celular -->
-                <td  class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">ID:</span>
-                    {{ $produto->id }}
+                     <!-- CÉLULAS (TD): Viram blocos empilhados no celular -->
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">ID:</span>
+                    <span class="flex-1">{{ $produto->id }}</span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Nome:</span>
-                    {{ $produto->nome }}
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Nome:</span>
+                    <span class="flex-1">{{ $produto->nome }}</span>
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Unidade de Medida:</span>
-                    {{ number_format($produto->valor_unidade_medida, 2, ',', '.') }} {{ $produto->unidade_medida }}
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Unidade de Medida:</span>
+                    <span class="flex-1">{{ number_format($produto->valor_unidade_medida, 2, ',', '.') }} {{ $produto->unidade_medida }}</span>
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">SKU:</span>
-                    {{ $produto->sku }}
+                <td class="py-2 px-4 md:py-3 md:px-2 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">SKU:</span>
+                    <span class="flex-1">{{ $produto->sku }}</span>
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Data de Validade:</span>
-                    {{ $produto->data_validade?->format('d/m/Y') ?? '-' }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Data de Validade:</span>
+                    <span class="flex-1">{{ $produto->data_validade?->format('d/m/Y') ?? '-' }}</span>
                 </td>
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Custo:</span>
-                    R$ {{ number_format($produto->preco_custo, 2, ',', '.') }}
-                </td>
-                
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Venda:</span>
-                    R$ {{ number_format($produto->preco_venda, 2, ',', '.') }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Custo:</span>
+                    <span class="flex-1">R$ {{ number_format($produto->preco_custo, 2, ',', '.') }}</span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Estoque:</span>
-                    {{ $produto->estoque_atual }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Venda:</span>
+                    <span class="flex-1">R$ {{ number_format($produto->preco_venda, 2, ',', '.') }}</span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Mínimo:</span>
-                    {{ $produto->estoque_minimo }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Estoque:</span>
+                    <span class="flex-1">{{ $produto->estoque_atual }}</span>
                 </td>
                 
-                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center block md:table-cell border-b md:border-none border-gray-100">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Categoria:</span>
-                    {{ $produto->categoria->nome ?? '-' }}
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Mínimo:</span>
+                    <span class="flex-1">{{ $produto->estoque_minimo }}</span>
                 </td>
                 
-                <td class="py-3 px-4 md:px-6 text-left md:text-center block md:table-cell uppercase text-base">
-                    <span class="inline-block text-center w-24 font-bold text-gray-700 md:hidden">Ações:</span>
+                <td class="py-2 px-4 md:py-3 md:px-6 text-left md:text-center flex items-start md:table-cell border-b md:border-none border-gray-100">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Categoria:</span>
+                    <span class="flex-1">{{ $produto->categoria->nome ?? '-' }}</span>
+                </td>
+                
+                <td class="py-3 px-4 md:px-6 text-left md:text-center flex items-center md:table-cell uppercase text-base">
+                    <span class="inline-block text-center w-24 shrink-0 font-bold text-gray-700 md:hidden">Ações:</span>
     
-                    <div class="inline-flex md:flex items-center justify-start md:justify-center space-x-2">
+                    <div class="flex-1 inline-flex md:flex items-center justify-start md:justify-center space-x-2">
         
                         <x-button-edit href="{{ route('admin.produtos.edit', $produto) }}" />
         
                         <x-button-delete action="{{ route('admin.produtos.destroy', $produto) }}" />
-
                     </div>
-                </td>
+                </td>           </td>
             </tr>
             @empty
             <tr class="block md:table-row">

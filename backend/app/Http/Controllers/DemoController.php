@@ -31,7 +31,7 @@ class DemoController extends Controller
 
         // Rodar o seeder para popular as tabelas com os dados predefinidos
         $seeder = new DemoSeeder();
-        $seeder->run();
+        $seeder->run($user);
 
         // Redirecionar para o dashboard
         return redirect()->route('admin.dashboard')->with('success', 'Bem-vindo ao ambiente de demonstração! Este ambiente é isolado e seus dados serão apagados em 45 minutos.');

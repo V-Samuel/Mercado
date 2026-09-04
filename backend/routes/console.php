@@ -9,4 +9,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 // Roda o comando de limpeza das contas demo automaticamente a cada 5 minutos
-Schedule::command('demo:cleanup')->everyFiveMinutes();
+Schedule::command('demo:cleanup')->everyFiveSeconds();

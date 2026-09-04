@@ -16,7 +16,7 @@ class AdminDashboardController extends Controller
         $categoriasCount = Categoria::count();
         $movimentacoesCount = Movimentacao::count();
         $produtosAbaixoEstoqueMinimoCount = Produto::whereColumn('estoque_atual', '<', 'estoque_minimo')->count();
-        $produtosAbaixoEstoqueMinimo = Produto::whereColumn('estoque_atual', '<', 'estoque_minimo')->pluck('nome')->implode(', ');
+        $produtosAbaixoEstoqueMinimo = Produto::whereColumn('estoque_atual', '<', 'estoque_minimo')->pluck('nome')->toArray();
         $produtoMaisMovimentado = Movimentacao::select('produto_id')
             ->selectRaw('COUNT(*) as total_movimentacoes')
             ->groupBy('produto_id')
@@ -34,8 +34,7 @@ class AdminDashboardController extends Controller
         $chartLabels = $topProdutosVendidos->pluck('produto.nome')->toArray();
         $chartData = $topProdutosVendidos->pluck('total_vendido')->toArray();
         $produtosPertoDeVencerCount = Produto::where('data_validade', '<=', now()->addDays(30))->count();
-        $diasProdutosPertoDeVencer = Produto::where('data_validade', '<=', now()->addDays(30))
-        ->get()
+        $diasProdutosPertoDeVencer = Produto::where('data_validade', '<=', now()->addDays(30))->get(['nome', 'data_validade'])
         ->map(function ($produto) {
 
             $dias = now()->startOfDay()->diffInDays($produto->data_validade, false); 

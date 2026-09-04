@@ -9,9 +9,15 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Produto::with('categoria')->get());
+        $query = Produto::with('categoria');
+        
+        if ($request->has('sku')) {
+            $query->where('sku', $request->query('sku'));
+        }
+        
+        return response()->json($query->get());
     }
 
     public function store(Request $request)
