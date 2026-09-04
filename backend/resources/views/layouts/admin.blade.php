@@ -21,7 +21,10 @@
                 <h1 class="text-2xl font-bold text-indigo-600">Painel do Admin</h1>
             </div>
             <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Dashboard</a>
+                @if(auth()->user()->nivel_acesso === 'admin')
+                    <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Dashboard</a>
+                    <a href="{{ route('admin.equipe.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.equipe.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Equipe</a>
+                @endif
                 <a href="{{ route('admin.produtos.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.produtos.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Produtos</a>
                 <a href="{{ route('admin.categorias.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.categorias.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Categorias</a>
                 <a href="{{ route('admin.movimentacoes.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.movimentacoes.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Movimentações</a>

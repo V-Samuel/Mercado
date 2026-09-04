@@ -24,7 +24,12 @@ class AdminAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+            
+            if (Auth::user()->nivel_acesso === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            }
+            
+            return redirect()->intended('/admin/produtos');
         }
 
         return back()->withErrors([
@@ -63,6 +68,10 @@ class AdminAuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/admin/dashboard');
+        if ($user->nivel_acesso === 'admin') {
+            return redirect('/admin/dashboard');
+        }
+
+        return redirect('/admin/produtos');
     }
 }

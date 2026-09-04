@@ -23,7 +23,7 @@ class DemoController extends Controller
             'name' => 'Usuário de Demonstração',
             'email' => $email,
             'password' => Hash::make($password),
-            'nivel_acesso' => 'admin' // Assumindo que admin é necessário para acessar o painel
+            'nivel_acesso' => 'admin'
         ]);
 
         // Autenticar o usuário para que os Global Scopes e Observers funcionem no Seeder

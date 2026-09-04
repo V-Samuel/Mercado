@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminCategoriaController;
 use App\Http\Controllers\Admin\AdminProdutoController;
 use App\Http\Controllers\Admin\AdminMovimentacaoController;
+use App\Http\Controllers\Admin\AdminEquipeController;
 use App\Http\Controllers\DemoController;
 
 Route::redirect('/', '/admin/login');
@@ -21,9 +22,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('register', [AdminAuthController::class, 'register']);
 
     Route::middleware('auth')->group(function () {
-        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->middleware('admin')->name('dashboard');
         Route::resource('categorias', AdminCategoriaController::class)->except(['show']);
         Route::resource('produtos', AdminProdutoController::class)->except(['show']);
         Route::resource('movimentacoes', AdminMovimentacaoController::class)->only(['index', 'create', 'store']);
+        Route::resource('equipe', AdminEquipeController::class)->only(['index', 'store', 'destroy'])->middleware('admin')->parameters(['equipe' => 'equipe']);
     });
 });

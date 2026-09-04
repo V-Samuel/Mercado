@@ -19,13 +19,13 @@ class Categoria extends Model
     {
         static::addGlobalScope('user', function (Builder $builder) {
             if (Auth::check()) {
-                $builder->where('user_id', Auth::id());
+                $builder->where('user_id', Auth::user()->tenant_id);
             }
         });
 
         static::creating(function ($model) {
             if (Auth::check() && empty($model->user_id)) {
-                $model->user_id = Auth::id();
+                $model->user_id = Auth::user()->tenant_id;
             }
         });
     }
