@@ -1,10 +1,18 @@
 <div id="modalExclusao" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
     <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-md mx-4">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">Tem certeza?</h2>
+        <div class="py-2 flex justify-between items-center border-b border-gray-300 mb-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Tem certeza?</h2>
+            <button type="button" onclick="fecharModal()"
+                class="text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
         <p class="text-gray-600 mb-6">
             Esta ação não pode ser desfeita. Deseja realmente excluir este registro?
         </p>
-        
+
         <div class="flex justify-end space-x-3">
             <button type="button" onclick="fecharModal()" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
                 Cancelar

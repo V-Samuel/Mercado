@@ -71,7 +71,7 @@ export default function LandingPage() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="http://localhost:8000/demo/start" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full font-bold text-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_100px_rgba(255,255,255,0.15)]">
+            <a href="http://localhost:8000/demo/start" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full font-bold text-lg transition-transform hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_100px_rgba(255,255,255,0.15)]">
               Ver Demonstração <ArrowRight className="w-5 h-5" />
             </a>
             

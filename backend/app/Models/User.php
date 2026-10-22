@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 #[Fillable(['name', 'email', 'password', 'nivel_acesso', 'parent_id'])]
 #[Hidden(['password', 'remember_token'])]
@@ -43,5 +44,10 @@ class User extends Authenticatable
     public function getTenantIdAttribute()
     {
         return $this->parent_id ?? $this->id;
+    }
+
+    public function isDemo(): bool
+    {
+        return Str::is('demo_*@sandbox.aemek.com', $this->email);
     }
 }

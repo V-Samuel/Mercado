@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - @yield('title', 'Dashboard')</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('mercado.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('mercado_arredondado.ico') }}">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,6 +29,16 @@
                 <a href="{{ route('admin.categorias.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.categorias.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Categorias</a>
                 <a href="{{ route('admin.movimentacoes.index') }}" class="block px-4 py-2 rounded-lg {{ request()->routeIs('admin.movimentacoes.*') ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }}">Movimentações</a>
             </nav>
+
+            <nav class="p-4 m-auto text-gray-500 inline-flex items-center gap-2 font-semibold">
+                <a href="{{ route('admin.perfil.index') }}" class="flex items-center gap-2 hover:text-gray-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9 shrink-0" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                    {{ Auth::user()->name ?? 'Administrador' }}
+                </a>
+            </nav>
+
             <div class="p-4 border-t border-gray-300">
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf

@@ -16,7 +16,9 @@ Route::get('/demo/start', [DemoController::class, 'startDemo'])->name('demo.star
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AdminAuthController::class, 'login']);
-    Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+
+    Route::post('/logout', [App\Http\Controllers\Admin\AdminAuthController::class, 'logout'])->name('logout');
 
     Route::get('register', [AdminAuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [AdminAuthController::class, 'register']);
@@ -27,5 +29,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('produtos', AdminProdutoController::class)->except(['show']);
         Route::resource('movimentacoes', AdminMovimentacaoController::class)->only(['index', 'create', 'store']);
         Route::resource('equipe', AdminEquipeController::class)->only(['index', 'store', 'destroy'])->middleware('admin')->parameters(['equipe' => 'equipe']);
+
+        Route::get('/perfil', [App\Http\Controllers\Admin\AdminPerfilController::class, 'index'])->name('perfil.index');
+        Route::put('/perfil', [App\Http\Controllers\Admin\AdminPerfilController::class, 'update'])->name('perfil.update');
+        Route::delete('/perfil', [App\Http\Controllers\Admin\AdminPerfilController::class, 'destroy'])->name('perfil.destroy');
     });
 });

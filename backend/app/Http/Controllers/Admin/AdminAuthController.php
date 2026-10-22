@@ -74,4 +74,5 @@ class AdminAuthController extends Controller
 
         return redirect('/admin/produtos');
     }
+
 }
